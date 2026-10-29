@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dossiê Secret: O Mistério no Baile da Rosa Dourada</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cozy: {
+                            900: '#1a0d16',
+                            800: '#2a1625',
+                            700: '#3d1e37',
+                            600: '#5c2d53',
+                            100: '#fdf2f8',
+                        },
+                        girly: {
+                            rose: '#f472b6',
+                            pink: '#ec4899',
+                            soft: '#fbcfe8',
+                            gold: '#fbbf24',
+                            lavender: '#c084fc',
+                            crimson: '#e11d48'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        handwriting: ['"Caveat"', 'cursive'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        .paper-texture {
+            background-color: #fff5f8;
+            background-image: radial-gradient(#fbcfe8 1.5px, transparent 0);
+            background-size: 18px 18px;
+            color: #292524;
+        }
+        .stamp-top-secret {
+            border: 2px dashed #ec4899;
+            color: #ec4899;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 0.15em;
+            transform: rotate(-6deg);
+            display: inline-block;
+        }
+        .moodboard {
+            background-color: #261724;
+            background-image: radial-gradient(#3d1e37 20%, transparent 20%), radial-gradient(#180a16 20%, transparent 20%);
+            background-size: 24px 24px;
+            background-position: 0 0, 12px 12px;
+        }
+        /* Custom scrollbars */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a0d16;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #5c2d53;
+            border-radius: 6px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f472b6;
+        }
+    </style>
+</head>
+<body class="bg-cozy-900 text-slate-100 font-sans min-h-screen flex flex-col selection:bg-girly-pink selection:text-white">
+
+    <!-- Top Header -->
+    <header class="border-b border-cozy-700 bg-cozy-800/90 backdrop-blur sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-gradient-to-tr from-girly-pink to-girly-rose text-white p-2.5 rounded-2xl shadow-lg shadow-girly-pink/30">
+                    <i class="fa-solid fa-crown text-xl"></i>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs uppercase tracking-widest text-girly-rose font-mono font-bold">Confidential Case • Top Secret</span>
+                        <span class="inline-block w-2 h-2 rounded-full bg-girly-pink animate-ping"></span>
+                    </div>
+                    <h1 class="text-lg md:text-xl font-extrabold font-serif tracking-wide text-rose-100">CASO #108: O Mistério no Baile da Rosa Dourada</h1>
+                </div>
+            </div>
+
+            <!-- Header Action Controls -->
+            <div class="flex items-center space-x-3">
+                <button id="btn-sound" onclick="toggleAudio()" class="px-3 py-1.5 text-xs font-mono rounded-full bg-cozy-700 hover:bg-cozy-600 text-rose-200 transition flex items-center gap-2 border border-girly-pink/30">
+                    <i class="fa-solid fa-volume-xmark" id="sound-icon"></i>
+                    <span id="sound-text">Som: Off</span>
+                </button>
+                <button onclick="resetInvestigation()" class="px-3 py-1.5 text-xs font-mono rounded-full bg-cozy-700 hover:bg-cozy-600 text-rose-200 transition flex items-center gap-2 border border-girly-pink/30" title="Reiniciar Anotações">
+                    <i class="fa-solid fa-rotate-left"></i>
+                    <span>Limpar Notas</span>
+                </button>
+                <button onclick="openAccusationModal()" class="px-5 py-1.5 text-xs md:text-sm font-bold rounded-full bg-gradient-to-r from-girly-pink via-rose-500 to-girly-lavender hover:opacity-95 text-white shadow-lg shadow-girly-pink/40 transition transform hover:scale-105 flex items-center gap-2">
+                    <i class="fa-solid fa-magnifying-glass-heart"></i>
+                    <span>Descobrir o Culpado!</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Tab Navigation Bar -->
+        <nav class="max-w-7xl mx-auto px-4 flex space-x-2 overflow-x-auto text-xs md:text-sm border-t border-cozy-700/60 pt-1">
+            <button onclick="switchTab('overview')" id="tab-overview" class="tab-btn active border-b-2 border-girly-pink text-girly-rose py-2.5 px-4 font-semibold flex items-center gap-2 whitespace-nowrap transition">
+                <i class="fa-solid fa-heart"></i> Visão Geral
+            </button>
+            <button onclick="switchTab('suspects')" id="tab-suspects" class="tab-btn text-rose-300/70 hover:text
